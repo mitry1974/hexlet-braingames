@@ -1,3 +1,6 @@
-#!/bin/sh
-':' //; exec "$(command -v nodejs || command -v node)" "$0" "$@"
+#!/usr/bin/env node
+
+import getUserNameAndHello from '..';
+
 console.log ('Welcome to the Brain Games!');
+getUserNameAndHello();
