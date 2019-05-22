@@ -1,6 +1,6 @@
 {
   "name": "mt-brain-games",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "Brain games project on Hexlet",
   "main": "brain-games.js",
   "scripts": {
