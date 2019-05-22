@@ -2,8 +2,11 @@
 install:
 	npm install
 
-start:
-	npx babel-node src/bin/brain-games.js
+startCalc:
+	npx babel-node src/bin/brain-calc.js
+
+startEven:
+		npx babel-node src/bin/brain-even.js
 
 lint:
-	npx eslint ./	
+	npx eslint ./
