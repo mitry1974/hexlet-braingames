@@ -1,10 +1,8 @@
 #!/usr/bin/env node
+import { game, getOperand } from './baseGame';
+
 const roundsCount = 3;
 const gameDescription = 'Answer "yes" if number even otherwise answer "no".';
-
-const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
-
-const getOperand = () => getRandomInt(1, 100);
 
 const getQuery = () => {
   const query = {};
@@ -16,17 +14,4 @@ const getQuery = () => {
   return query;
 };
 
-const evenGame = () => (
-  {
-    getRoundsCount() {
-      return roundsCount;
-    },
-    getGameDescription() {
-      return gameDescription;
-    },
-    getNextQuery() {
-      return getQuery();
-    },
-  });
-
-export default evenGame;
+export default game(gameDescription, roundsCount, getQuery);

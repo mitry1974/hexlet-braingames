@@ -5,13 +5,12 @@ const getPlayerName = () => readlineSync.question('May I have your name? ');
 
 const playGame = (game) => {
   console.log('Welcome to the Brain Games!');
-  const gameObj = game();
-  console.log(gameObj.getGameDescription());
+  console.log(game.getGameDescription());
   const playerName = getPlayerName();
   console.log(`Hello, ${playerName}!`);
   let bres = true;
-  for (let i = 0; i < gameObj.getRoundsCount(); i += 1) {
-    const query = gameObj.getNextQuery();
+  for (let i = 0; i < game.getRoundsCount(); i += 1) {
+    const query = game.getNextQuery();
     console.log(`Question: ${query.toString()}`);
     const answer = readlineSync.question('Your answer: ');
     bres = bres && query.check(answer);

@@ -1,10 +1,10 @@
 #!/usr/bin/env node
+
+import { game, getOperand, getRandomInt } from './baseGame';
+
 const roundsCount = 3;
+
 const gameDescription = 'What is the result of the expression?';
-
-const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
-
-const getOperand = () => getRandomInt(1, 100);
 
 const getQuery = () => {
   const query = {
@@ -36,17 +36,4 @@ const getQuery = () => {
   return query;
 };
 
-const calcGame = () => (
-  {
-    getRoundsCount() {
-      return roundsCount;
-    },
-    getGameDescription() {
-      return gameDescription;
-    },
-    getNextQuery() {
-      return getQuery();
-    },
-  });
-
-export default calcGame;
+export default game(gameDescription, roundsCount, getQuery);
