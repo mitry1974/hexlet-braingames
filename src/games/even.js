@@ -11,10 +11,7 @@ const getQuery = () => {
   query.a = getOperand();
   query.toString = () => `${query.a}`;
   query.isEven = () => query.a % 2 === 0;
-  query.check = (c) => {
-    console.log('test answer: ', c);
-    return (query.isEven() && c === 'yes') || (!query.isEven() && c === 'no');
-  };
+  query.check = c => (query.isEven() && c === 'yes') || (!query.isEven() && c === 'no');
   query.getCorrectAnswer = () => (query.isEven() ? 'yes' : 'no');
   return query;
 };
