@@ -5,7 +5,11 @@ const roundsCount = 3;
 const gameDescription = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
 const isPrime = (val) => {
-  if ((val < 2) || (val % 2 === 0 && val !== 2)) {
+  if (val < 2) {
+    return false;
+  }
+
+  if (val % 2 === 0 && val !== 2) {
     return false;
   }
 
