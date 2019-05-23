@@ -6,6 +6,42 @@ const roundsCount = 3;
 
 const gameDescription = 'What is the result of the expression?';
 
+const getCalculationResult = (operation) => {
+  let f;
+  switch (operation) {
+    case 1:
+      f = (a, b) => a - b;
+      break;
+    case 2:
+      f = (a, b) => a + b;
+      break;
+    case 3:
+      f = (a, b) => a * b;
+      break;
+    default:
+      break;
+  }
+  return f;
+};
+
+const getOperationString = (operation) => {
+  let op = '';
+  switch (operation) {
+    case 1:
+      op = '-';
+      break;
+    case 2:
+      op = '+';
+      break;
+    case 3:
+      op = '*';
+      break;
+    default:
+      break;
+  }
+  return op;
+};
+
 const getQuery = () => {
   const query = {
 
@@ -14,24 +50,12 @@ const getQuery = () => {
   query.a = getOperand();
   query.b = getOperand();
 
-  switch (getRandomInt(1, 3)) {
-    case 1:
-      query.calc = () => query.a - query.b;
-      query.toString = () => `${query.a} - ${query.b} = `;
-      break;
-    case 2:
-      query.calc = () => query.a + query.b;
-      query.toString = () => `${query.a} + ${query.b} = `;
-      break;
-    case 3:
-      query.calc = () => query.a * query.b;
-      query.toString = () => `${query.a} * ${query.b} = `;
-      break;
-    default:
-      break;
-  }
-  query.check = c => query.calc() === parseInt(c, 10);
-  query.getCorrectAnswer = () => query.calc();
+  const operation = getRandomInt(1, 3);
+  query.result = getCalculationResult(operation)(query.a, query.b);
+  query.toString = () => `${query.a} ${getOperationString(operation)} ${query.b} = `;
+
+  query.check = c => query.result === parseInt(c, 10);
+  query.getCorrectAnswer = () => query.result;
 
   return query;
 };
