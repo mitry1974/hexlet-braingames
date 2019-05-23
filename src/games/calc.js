@@ -25,7 +25,7 @@ const getQuery = () => {
       break;
     case 3:
       query.calc = () => query.a * query.b;
-      query.toString = () => `${query.a} + ${query.b} = `;
+      query.toString = () => `${query.a} * ${query.b} = `;
       break;
     default:
       break;
