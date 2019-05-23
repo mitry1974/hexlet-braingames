@@ -17,17 +17,24 @@ const printAndReturnQuery = (game) => {
   return query;
 };
 
+const printCheckQueryResult = (result, answer, query) => {
+  if (result) {
+    console.log('Correct!');
+  } else {
+    console.log(`'${answer}' is wrong answer ;(. Correct answer was '${query.getCorrectAnswer()}'.`);
+  }
+};
+
 const playGame = (game) => {
   const pName = printGreetingAndReturnPlayerName(game);
   let bres = true;
   for (let i = 0; i < game.getRoundsCount(); i += 1) {
-    const query = printAndReturnQuery();
+    const query = printAndReturnQuery(game);
     const answer = readlineSync.question('Your answer: ');
     bres = bres && query.check(answer);
-    if (bres) {
-      console.log('Correct!');
-    } else {
-      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${query.getCorrectAnswer()}'.`);
+
+    printCheckQueryResult(bres, answer, query);
+    if (!bres) {
       break;
     }
   }
