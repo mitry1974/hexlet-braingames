@@ -4,10 +4,10 @@ import { game, getRandomInt } from './baseGame';
 const roundsCount = 1;
 const gameDescription = 'What number is missing in the progression?';
 const progressionStep = 2;
-const progressionCountMin = 1;
+const progressionCountMin = 2;
 const progressionCountMax = 15;
 const progressionStartMin = 1;
-const progressionStartMax = 1;
+const progressionStartMax = 15;
 
 const getProgression = (nFrom, nCount, step) => {
   if (nCount === 0) {
