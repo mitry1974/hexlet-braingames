@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { game, getRandomInt } from './baseGame';
 
-const roundsCount = 1;
+const roundsCount = 3;
 const gameDescription = 'What number is missing in the progression?';
 const progressionStep = 2;
 const progressionCountMin = 2;
