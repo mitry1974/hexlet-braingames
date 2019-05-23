@@ -8,30 +8,33 @@ const isDividebyTwoButNotTwo = n => (n % 2 === 0 && n !== 2);
 const isLessThanTwo = n => n < 2;
 const getMaxValueForPrimeChecking = n => Math.round(Math.sqrt(n)) + 1;
 const isDividedWithoutRemainder = (n, m) => n % m === 0;
+const startChecking = (n) => {
+  if (isLessThanTwo(n)) {
+    return false;
+  }
+  if (isDividebyTwoButNotTwo(n)) {
+    return false;
+  }
+  return true;
+};
+
+const iter = (value, i, maxValue) => {
+  if (i >= maxValue) {
+    return true;
+  }
+
+  if (isDividedWithoutRemainder(value, i)) {
+    return false;
+  }
+  return iter(i + 2);
+};
 
 const isPrime = (val) => {
-  if (isLessThanTwo(val)) {
+  if (!startChecking(val)) {
     return false;
   }
-
-  if (isDividebyTwoButNotTwo(val)) {
-    return false;
-  }
-
   const max = getMaxValueForPrimeChecking();
-  const iter = (i) => {
-    if (i >= max) {
-      return true;
-    }
-
-    if (isDividedWithoutRemainder(val, i)) {
-      return false;
-    }
-    return iter(i + 2);
-  };
-
-
-  return iter(3);
+  return iter(val, max, 3);
 };
 
 const getQuery = () => {
