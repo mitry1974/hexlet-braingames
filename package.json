@@ -1,6 +1,6 @@
 {
   "name": "mt-brain-games",
-  "version": "6.1.5",
+  "version": "6.1.6",
   "description": "Brain games project on Hexlet",
   "main": "brain-games.js",
   "scripts": {
@@ -8,6 +8,11 @@
     "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
     "prepublishOnly": "npm run build"
   },
+  "keywords":[
+    "study",
+    "games",
+    "hexlet"
+  ],
   "bin": {
     "brain-calc": "dist/bin/brain-calc.js",
     "brain-even" : "dist/bin/brain-even.js",
