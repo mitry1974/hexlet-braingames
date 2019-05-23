@@ -4,22 +4,27 @@ import { game, getOperand } from './baseGame';
 const roundsCount = 3;
 const gameDescription = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
+const isDividebyTwoButNotTwo = n => (n % 2 === 0 && n !== 2);
+const isLessThanTwo = n => n < 2;
+const getMaxValueForPrimeChecking = n => Math.round(Math.sqrt(n)) + 1;
+const isDividedWithoutRemainder = (n, m) => n % m === 0;
+
 const isPrime = (val) => {
-  if (val < 2) {
+  if (isLessThanTwo(val)) {
     return false;
   }
 
-  if (val % 2 === 0 && val !== 2) {
+  if (isDividebyTwoButNotTwo(val)) {
     return false;
   }
 
-  const max = Math.round(Math.sqrt(val)) + 1;
+  const max = getMaxValueForPrimeChecking();
   const iter = (i) => {
     if (i >= max) {
       return true;
     }
 
-    if (val % i === 0) {
+    if (isDividedWithoutRemainder(val, i)) {
       return false;
     }
     return iter(i + 2);
