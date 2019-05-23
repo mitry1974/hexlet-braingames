@@ -11,12 +11,17 @@ const printGreetingAndReturnPlayerName = (game) => {
   return playerName;
 };
 
+const printAndReturnQuery = (game) => {
+  const query = game.getNextQuery();
+  console.log(`Question: ${query.toString()}`);
+  return query;
+};
+
 const playGame = (game) => {
   const pName = printGreetingAndReturnPlayerName(game);
   let bres = true;
   for (let i = 0; i < game.getRoundsCount(); i += 1) {
-    const query = game.getNextQuery();
-    console.log(`Question: ${query.toString()}`);
+    const query = printAndReturnQuery();
     const answer = readlineSync.question('Your answer: ');
     bres = bres && query.check(answer);
     if (bres) {
