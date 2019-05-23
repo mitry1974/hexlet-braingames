@@ -3,11 +3,16 @@ import readlineSync from 'readline-sync';
 
 const getPlayerName = () => readlineSync.question('May I have your name? ');
 
-const playGame = (game) => {
+const printGreetingAndReturnPlayerName = (game) => {
   console.log('Welcome to the Brain Games!');
   console.log(game.getGameDescription());
   const playerName = getPlayerName();
   console.log(`Hello, ${playerName}!`);
+  return playerName;
+};
+
+const playGame = (game) => {
+  const pName = printGreetingAndReturnPlayerName(game);
   let bres = true;
   for (let i = 0; i < game.getRoundsCount(); i += 1) {
     const query = game.getNextQuery();
@@ -21,7 +26,7 @@ const playGame = (game) => {
       break;
     }
   }
-  console.log(bres ? `Congratulations, ${playerName}!` : `Let's try again, ${playerName}!`);
+  console.log(bres ? `Congratulations, ${pName}!` : `Let's try again, ${pName}!`);
 };
 
 export default playGame;
