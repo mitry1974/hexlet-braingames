@@ -45,12 +45,11 @@ const getGameStepQuery = () => {
 
   };
 
-  query.a = getOperand();
-  query.b = getOperand();
-
+  const opA = getOperand();
+  const opB = getOperand();
   const operation = getRandomInt(1, 3);
-  query.result = getCalculationResult(operation)(query.a, query.b);
-  query.toString = () => `${query.a} ${getOperationString(operation)} ${query.b} = `;
+  query.result = getCalculationResult(operation)(opA, opB);
+  query.toString = () => `${opA} ${getOperationString(operation)} ${opB} = `;
 
   query.check = c => query.result === parseInt(c, 10);
   query.getCorrectAnswer = () => query.result;
