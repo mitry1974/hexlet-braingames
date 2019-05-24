@@ -2,7 +2,6 @@
 import playGame, { baseGame, getRandomInt } from '../engine';
 
 const gameDescription = 'What number is missing in the progression?';
-const progressionStep = 2;
 const progressionCountMin = 2;
 const progressionCountMax = 15;
 const progressionStartMin = 1;
@@ -21,7 +20,7 @@ const getGameStepQuery = () => {
   const progression = getProgression(
     getRandomInt(progressionStartMin, progressionStartMax),
     getRandomInt(progressionCountMin, progressionCountMax),
-    progressionStep,
+    getRandomInt(1, 10),
   );
   [query.elem] = progression.splice(getRandomInt(0, progression.length - 1), 1, '..');
   query.progression = progression;
