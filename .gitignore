@@ -3,4 +3,5 @@
 *.log
 dist
 .tern-port
+launch.json
 .idea

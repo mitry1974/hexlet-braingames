@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { game, getOperand } from './baseGame';
+import playGame, { baseGame, getOperand } from '../engine';
 
 const roundsCount = 3;
 const primecheckingStep = 2;
@@ -48,4 +48,4 @@ const getQuery = () => {
   return query;
 };
 
-export default game(gameDescription, roundsCount, getQuery);
+export default () => playGame(baseGame(gameDescription, roundsCount, getQuery));

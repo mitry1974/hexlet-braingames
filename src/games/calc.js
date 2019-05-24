@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { game, getOperand, getRandomInt } from './baseGame';
+import playGame, { baseGame, getOperand, getRandomInt } from '../engine';
 
 const roundsCount = 3;
 
@@ -60,4 +60,4 @@ const getQuery = () => {
   return query;
 };
 
-export default game(gameDescription, roundsCount, getQuery);
+export default () => playGame(baseGame(gameDescription, roundsCount, getQuery));
