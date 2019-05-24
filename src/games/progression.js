@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { game, getRandomInt } from './baseGame';
+import playGame, { baseGame, getRandomInt } from '../engine';
 
 const roundsCount = 3;
 const gameDescription = 'What number is missing in the progression?';
@@ -32,4 +32,4 @@ const getQuery = () => {
   return query;
 };
 
-export default game(gameDescription, roundsCount, getQuery);
+export default () => playGame(baseGame(gameDescription, roundsCount, getQuery));
