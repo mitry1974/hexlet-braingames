@@ -16,7 +16,7 @@ const getProgression = (nFrom, nCount, step) => {
 };
 
 
-const getQuery = () => {
+const getGameStepQuery = () => {
   const query = {};
   const progression = getProgression(
     getRandomInt(progressionStartMin, progressionStartMax),
@@ -31,4 +31,4 @@ const getQuery = () => {
   return query;
 };
 
-export default () => playGame(baseGame(gameDescription, getQuery));
+export default () => playGame(baseGame(gameDescription, getGameStepQuery));

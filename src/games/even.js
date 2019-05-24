@@ -3,7 +3,7 @@ import playGame, { baseGame, getOperand } from '../engine';
 
 const gameDescription = 'Answer "yes" if number even otherwise answer "no".';
 
-const getQuery = () => {
+const getGameStepQuery = () => {
   const query = {};
   query.a = getOperand();
   query.toString = () => `${query.a}`;
@@ -13,4 +13,4 @@ const getQuery = () => {
   return query;
 };
 
-export default () => playGame(baseGame(gameDescription, getQuery));
+export default () => playGame(baseGame(gameDescription, getGameStepQuery));

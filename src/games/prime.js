@@ -38,7 +38,7 @@ const isPrime = (val) => {
   return primeIter(val, startPrimeChecking, getMaxValueForPrimeChecking(val));
 };
 
-const getQuery = () => {
+const getGameStepQuery = () => {
   const query = {};
   query.a = getOperand();
   query.toString = () => `${query.a}`;
@@ -47,4 +47,4 @@ const getQuery = () => {
   return query;
 };
 
-export default () => playGame(baseGame(gameDescription, getQuery));
+export default () => playGame(baseGame(gameDescription, getGameStepQuery));

@@ -40,7 +40,7 @@ const getOperationString = (operation) => {
   return op;
 };
 
-const getQuery = () => {
+const getGameStepQuery = () => {
   const query = {
 
   };
@@ -58,4 +58,4 @@ const getQuery = () => {
   return query;
 };
 
-export default () => playGame(baseGame(gameDescription, getQuery));
+export default () => playGame(baseGame(gameDescription, getGameStepQuery));

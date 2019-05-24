@@ -11,7 +11,7 @@ const findGCD = (a, b) => {
   return findGCD(b % a, a);
 };
 
-const getQuery = () => {
+const getGameStepQuery = () => {
   const query = {};
   query.a = getOperand();
   query.b = getOperand();
@@ -21,4 +21,4 @@ const getQuery = () => {
   return query;
 };
 
-export default () => playGame(baseGame(gameDescription, getQuery));
+export default () => playGame(baseGame(gameDescription, getGameStepQuery));
