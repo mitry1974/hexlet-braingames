@@ -17,7 +17,7 @@ const isPrime = (val) => {
     if (i >= maxValue) {
       return true;
     }
-  
+
     if (isDividedWithoutRemainder(value, i)) {
       return false;
     }
