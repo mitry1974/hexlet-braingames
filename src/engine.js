@@ -1,44 +1,44 @@
 #!/usr/bin/env node
 import readlineSync from 'readline-sync';
 
-const getPlayerName = () => readlineSync.question('May I have your name? ');
+const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 
-const printGreetingAndReturnPlayerName = (game) => {
-  console.log('Welcome to the Brain Games!');
-  console.log(game.getGameDescription());
-  const playerName = getPlayerName();
-  console.log(`Hello, ${playerName}!`);
-  return playerName;
-};
+const getOperand = () => getRandomInt(1, 100);
 
-const printAndReturnQuery = (game) => {
-  const query = game.getNextQuery();
-  console.log(`Question: ${query.toString()}`);
-  return query;
-};
-
-const printCheckQueryResult = (result, answer, query) => {
-  if (result) {
-    console.log('Correct!');
-  } else {
-    console.log(`'${answer}' is wrong answer ;(. Correct answer was '${query.getCorrectAnswer()}'.`);
-  }
-};
+const baseGame = (description, roundsCount, query) => (
+  {
+    getRoundsCount() {
+      return roundsCount;
+    },
+    getGameDescription() {
+      return description;
+    },
+    getNextQuery() {
+      return query();
+    },
+  });
 
 const playGame = (game) => {
-  const pName = printGreetingAndReturnPlayerName(game);
+  console.log('Welcome to the Brain Games!');
+  console.log(game.getGameDescription());
+  const playerName = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${playerName}!`);
   let bres = true;
   for (let i = 0; i < game.getRoundsCount(); i += 1) {
-    const query = printAndReturnQuery(game);
+    const query = game.getNextQuery();
+    console.log(`Question: ${query.toString()}`);
     const answer = readlineSync.question('Your answer: ');
     bres = bres && query.check(answer);
 
-    printCheckQueryResult(bres, answer, query);
-    if (!bres) {
+    if (bres) {
+      console.log('Correct!');
+    } else {
+      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${query.getCorrectAnswer()}'.`);
       break;
     }
   }
-  console.log(bres ? `Congratulations, ${pName}!` : `Let's try again, ${pName}!`);
+  console.log(bres ? `Congratulations, ${playerName}!` : `Let's try again, ${playerName}!`);
 };
 
+export { baseGame, getRandomInt, getOperand };
 export default playGame;
