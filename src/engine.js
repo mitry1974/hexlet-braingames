@@ -1,15 +1,13 @@
 #!/usr/bin/env node
 import readlineSync from 'readline-sync';
 
+const roundsCount = 3;
 const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
 
 const getOperand = () => getRandomInt(1, 100);
 
-const baseGame = (description, roundsCount, query) => (
+const baseGame = (description, query) => (
   {
-    getRoundsCount() {
-      return roundsCount;
-    },
     getGameDescription() {
       return description;
     },
@@ -24,7 +22,7 @@ const playGame = (game) => {
   const playerName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${playerName}!`);
   let bres = true;
-  for (let i = 0; i < game.getRoundsCount(); i += 1) {
+  for (let i = 0; i < roundsCount; i += 1) {
     const query = game.getNextQuery();
     console.log(`Question: ${query.toString()}`);
     const answer = readlineSync.question('Your answer: ');

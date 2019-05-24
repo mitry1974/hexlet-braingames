@@ -2,8 +2,6 @@
 
 import playGame, { baseGame, getOperand, getRandomInt } from '../engine';
 
-const roundsCount = 3;
-
 const gameDescription = 'What is the result of the expression?';
 
 const getCalculationResult = (operation) => {
@@ -60,4 +58,4 @@ const getQuery = () => {
   return query;
 };
 
-export default () => playGame(baseGame(gameDescription, roundsCount, getQuery));
+export default () => playGame(baseGame(gameDescription, getQuery));

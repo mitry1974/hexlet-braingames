@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 import playGame, { baseGame, getOperand } from '../engine';
 
-const roundsCount = 3;
 const primecheckingStep = 2;
 const startPrimeChecking = 3;
 const gameDescription = 'Answer "yes" if given number is prime. Otherwise answer "no".';
@@ -48,4 +47,4 @@ const getQuery = () => {
   return query;
 };
 
-export default () => playGame(baseGame(gameDescription, roundsCount, getQuery));
+export default () => playGame(baseGame(gameDescription, getQuery));

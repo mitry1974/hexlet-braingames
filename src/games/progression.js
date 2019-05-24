@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 import playGame, { baseGame, getRandomInt } from '../engine';
 
-const roundsCount = 3;
 const gameDescription = 'What number is missing in the progression?';
 const progressionStep = 2;
 const progressionCountMin = 2;
@@ -32,4 +31,4 @@ const getQuery = () => {
   return query;
 };
 
-export default () => playGame(baseGame(gameDescription, roundsCount, getQuery));
+export default () => playGame(baseGame(gameDescription, getQuery));

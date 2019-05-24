@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 import playGame, { baseGame, getOperand } from '../engine';
 
-const roundsCount = 3;
 const gameDescription = 'Answer "yes" if number even otherwise answer "no".';
 
 const getQuery = () => {
@@ -14,4 +13,4 @@ const getQuery = () => {
   return query;
 };
 
-export default () => playGame(baseGame(gameDescription, roundsCount, getQuery));
+export default () => playGame(baseGame(gameDescription, getQuery));
