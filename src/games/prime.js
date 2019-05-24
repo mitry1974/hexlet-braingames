@@ -5,36 +5,25 @@ const primecheckingStep = 2;
 const startPrimeChecking = 3;
 const gameDescription = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
-const isDividebyTwoButNotTwo = n => (n % 2 === 0 && n !== 2);
-const isLessThanTwo = n => n < 2;
 const getMaxValueForPrimeChecking = n => Math.round(Math.sqrt(n)) + 1;
 const isDividedWithoutRemainder = (n, m) => n % m === 0;
 
-const startChecking = (n) => {
-  if (isLessThanTwo(n)) {
-    return false;
-  }
-  if (isDividebyTwoButNotTwo(n)) {
-    return false;
-  }
-  return true;
-};
-
-const primeIter = (value, i, maxValue) => {
-  if (i >= maxValue) {
-    return true;
-  }
-
-  if (isDividedWithoutRemainder(value, i)) {
-    return false;
-  }
-  return primeIter(value, i + primecheckingStep, maxValue);
-};
-
 const isPrime = (val) => {
-  if (!startChecking(val)) {
+  if (val < 2 || (val % 2 === 0 && val !== 2)) {
     return false;
   }
+
+  const primeIter = (value, i, maxValue) => {
+    if (i >= maxValue) {
+      return true;
+    }
+  
+    if (isDividedWithoutRemainder(value, i)) {
+      return false;
+    }
+    return primeIter(value, i + primecheckingStep, maxValue);
+  };
+
   return primeIter(val, startPrimeChecking, getMaxValueForPrimeChecking(val));
 };
 
