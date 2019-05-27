@@ -7,14 +7,11 @@ const getCalculationResult = (operation) => {
   let f;
   switch (operation) {
     case 1:
-      f = (a, b) => a - b;
-      break;
+      return (a, b) => a - b;
     case 2:
-      f = (a, b) => a + b;
-      break;
+      return (a, b) => a + b;
     case 3:
-      f = (a, b) => a * b;
-      break;
+      return (a, b) => a * b;
     default:
       break;
   }
