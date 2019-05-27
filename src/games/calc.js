@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 
-import playGame, { baseGame, getOperand, getRandomInt } from '../engine';
-
-const gameDescription = 'What is the result of the expression?';
+import playGame, { getOperand, getRandomInt } from '../engine';
 
 const getCalculationResult = (operation) => {
   let f;
@@ -40,21 +38,21 @@ const getOperationString = (operation) => {
   return op;
 };
 
-const getGameStepQuery = () => {
-  const query = {
+const calcGame = {
+  getGameDescription: () => 'What is the result of the expression?',
+  getNextQuestion() {
+    const query = {
 
-  };
-
-  const opA = getOperand();
-  const opB = getOperand();
-  const operation = getRandomInt(1, 3);
-  query.result = getCalculationResult(operation)(opA, opB);
-  query.toString = () => `${opA} ${getOperationString(operation)} ${opB} = `;
-
-  query.check = c => query.result === parseInt(c, 10);
-  query.getCorrectAnswer = () => query.result;
-
-  return query;
+    };
+    const opA = getOperand();
+    const opB = getOperand();
+    const operation = getRandomInt(1, 3);
+    const answer = getCalculationResult(operation)(opA, opB);
+    query.getDescription = () => `${opA} ${getOperationString(operation)} ${opB} = `;
+    query.checkAnswer = c => answer === parseInt(c, 10);
+    query.getCorrectAnswer = () => answer;
+    return query;
+  },
 };
 
-export default () => playGame(baseGame(gameDescription, getGameStepQuery));
+export default () => playGame(calcGame);

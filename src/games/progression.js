@@ -1,8 +1,7 @@
 #!/usr/bin/env node
-import playGame, { baseGame, getRandomInt } from '../engine';
+import playGame, { getRandomInt } from '../engine';
 
-const gameDescription = 'What number is missing in the progression?';
-const progressionCountMin = 2;
+const progressionCountMin = 3;
 const progressionCountMax = 15;
 const progressionStartMin = 1;
 const progressionStartMax = 15;
@@ -14,20 +13,20 @@ const getProgression = (nFrom, nCount, step) => {
   return [nFrom, ...getProgression(nFrom + step, nCount - 1, step)];
 };
 
-
-const getGameStepQuery = () => {
-  const query = {};
-  const progression = getProgression(
-    getRandomInt(progressionStartMin, progressionStartMax),
-    getRandomInt(progressionCountMin, progressionCountMax),
-    getRandomInt(1, 10),
-  );
-  [query.elem] = progression.splice(getRandomInt(0, progression.length - 1), 1, '..');
-  query.progression = progression;
-  query.toString = () => query.progression.concat(' ');
-  query.check = c => parseInt(c, 10) === query.elem;
-  query.getCorrectAnswer = () => query.elem;
-  return query;
+const progressionGame = {
+  getGameDescription: () => 'What number is missing in the progression?',
+  getNextQuestion() {
+    const query = {};
+    const progression = getProgression(
+      getRandomInt(progressionStartMin, progressionStartMax),
+      getRandomInt(progressionCountMin, progressionCountMax),
+      getRandomInt(1, 10),
+    );
+    const [answer] = progression.splice(getRandomInt(0, progression.length - 1), 1, '..');
+    query.getDescription = () => progression.concat(' ');
+    query.checkAnswer = c => parseInt(c, 10) === answer;
+    query.getCorrectAnswer = () => answer;
+    return query;
+  },
 };
-
-export default () => playGame(baseGame(gameDescription, getGameStepQuery));
+export default () => playGame(progressionGame);

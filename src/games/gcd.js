@@ -1,24 +1,20 @@
 #!/usr/bin/env node
-import playGame, { baseGame, getOperand } from '../engine';
+import playGame, { getOperand } from '../engine';
 
-const gameDescription = 'Find the greatest common divisor of given numbers.';
+const findGCD = (a, b) => ((a === 0) ? b : findGCD(b % a, a));
 
-const findGCD = (a, b) => {
-  if (a === 0) {
-    return b;
-  }
-
-  return findGCD(b % a, a);
+const gcdGame = {
+  getGameDescription: () => 'Find the greatest common divisor of given numbers.',
+  getNextQuestion() {
+    const query = {};
+    const opA = getOperand();
+    const opB = getOperand();
+    const answer = findGCD(opA, opB);
+    query.getDescription = () => `${opA} ${opB}`;
+    query.checkAnswer = c => parseInt(c, 10) === answer;
+    query.getCorrectAnswer = () => answer;
+    return query;
+  },
 };
 
-const getGameStepQuery = () => {
-  const query = {};
-  query.a = getOperand();
-  query.b = getOperand();
-  query.toString = () => `${query.a} ${query.b}`;
-  query.check = c => parseInt(c, 10) === findGCD(query.a, query.b);
-  query.getCorrectAnswer = () => findGCD(query.a, query.b);
-  return query;
-};
-
-export default () => playGame(baseGame(gameDescription, getGameStepQuery));
+export default () => playGame(gcdGame);

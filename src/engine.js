@@ -6,16 +6,6 @@ const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min)) + min
 
 const getOperand = () => getRandomInt(1, 100);
 
-const baseGame = (description, query) => (
-  {
-    getGameDescription() {
-      return description;
-    },
-    getNextQuery() {
-      return query();
-    },
-  });
-
 const playGame = (game) => {
   console.log('Welcome to the Brain Games!');
   console.log(game.getGameDescription());
@@ -23,20 +13,20 @@ const playGame = (game) => {
   console.log(`Hello, ${playerName}!`);
   let bres = true;
   for (let i = 0; i < roundsCount; i += 1) {
-    const query = game.getNextQuery();
-    console.log(`Question: ${query.toString()}`);
+    const question = game.getNextQuestion();
+    console.log(`Question: ${question.getDescription()}`);
     const answer = readlineSync.question('Your answer: ');
-    bres = bres && query.check(answer);
+    bres = bres && question.checkAnswer(answer);
 
     if (bres) {
       console.log('Correct!');
     } else {
-      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${query.getCorrectAnswer()}'.`);
+      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${question.getCorrectAnswer()}'.`);
       break;
     }
   }
   console.log(bres ? `Congratulations, ${playerName}!` : `Let's try again, ${playerName}!`);
 };
 
-export { baseGame, getRandomInt, getOperand };
+export { getRandomInt, getOperand };
 export default playGame;

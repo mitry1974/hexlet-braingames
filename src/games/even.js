@@ -1,16 +1,18 @@
 #!/usr/bin/env node
-import playGame, { baseGame, getOperand } from '../engine';
+import playGame, { getOperand } from '../engine';
 
-const gameDescription = 'Answer "yes" if number even otherwise answer "no".';
-
-const getGameStepQuery = () => {
-  const query = {};
-  query.a = getOperand();
-  query.toString = () => `${query.a}`;
-  query.isEven = () => query.a % 2 === 0;
-  query.check = c => (query.isEven() && c === 'yes') || (!query.isEven() && c === 'no');
-  query.getCorrectAnswer = () => (query.isEven() ? 'yes' : 'no');
-  return query;
+const isEven = n => n % 2 === 0;
+const evenGame = {
+  getGameDescription: () => 'Answer "yes" if number even otherwise answer "no".',
+  getNextQuestion() {
+    const query = {};
+    const opA = getOperand();
+    const answer = (isEven(opA) ? 'yes' : 'no');
+    query.getDescription = () => opA;
+    query.checkAnswer = c => c === answer;
+    query.getCorrectAnswer = () => answer;
+    return query;
+  },
 };
 
-export default () => playGame(baseGame(gameDescription, getGameStepQuery));
+export default () => playGame(evenGame);
