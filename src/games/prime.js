@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-import playGame, { getOperand } from '../engine';
+import playGame from '../engine';
+import { getOperand } from '../utils';
 
 const primecheckingStep = 2;
 const startPrimeChecking = 3;

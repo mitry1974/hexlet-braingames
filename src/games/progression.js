@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-import playGame, { getRandomInt } from '../engine';
+import playGame from '../engine';
+import { getRandomInt } from '../utils';
 
 const progressionCountMin = 3;
 const progressionCountMax = 15;

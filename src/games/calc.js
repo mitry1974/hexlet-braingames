@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
-import playGame, { getOperand, getRandomInt } from '../engine';
+import playGame from '../engine';
+import { getOperand, getRandomInt } from '../utils';
 
 const getCalculationResult = (operation) => {
   let f;
