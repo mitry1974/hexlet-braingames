@@ -30,13 +30,13 @@ const isPrime = (val) => {
 const primeGame = {
   getGameDescription: () => 'Answer "yes" if given number is prime. Otherwise answer "no".',
   getNextQuestion() {
-    const query = {};
+    const question = {};
     const opA = getOperand();
     const answer = isPrime(opA) ? 'yes' : 'no';
-    query.getDescription = () => opA;
-    query.checkAnswer = c => c === answer;
-    query.getCorrectAnswer = () => answer;
-    return query;
+    question.getDescription = () => opA;
+    question.checkAnswer = c => c === answer;
+    question.getCorrectAnswer = () => answer;
+    return question;
   },
 };
 

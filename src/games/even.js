@@ -6,13 +6,13 @@ const isEven = n => n % 2 === 0;
 const evenGame = {
   getGameDescription: () => 'Answer "yes" if number even otherwise answer "no".',
   getNextQuestion() {
-    const query = {};
+    const question = {};
     const opA = getOperand();
     const answer = (isEven(opA) ? 'yes' : 'no');
-    query.getDescription = () => opA;
-    query.checkAnswer = c => c === answer;
-    query.getCorrectAnswer = () => answer;
-    return query;
+    question.getDescription = () => opA;
+    question.checkAnswer = c => c === answer;
+    question.getCorrectAnswer = () => answer;
+    return question;
   },
 };
 

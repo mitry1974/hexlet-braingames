@@ -17,17 +17,17 @@ const getProgression = (nFrom, nCount, step) => {
 const progressionGame = {
   getGameDescription: () => 'What number is missing in the progression?',
   getNextQuestion() {
-    const query = {};
+    const question = {};
     const progression = getProgression(
       getRandomInt(progressionStartMin, progressionStartMax),
       getRandomInt(progressionCountMin, progressionCountMax),
       getRandomInt(1, 10),
     );
     const [answer] = progression.splice(getRandomInt(0, progression.length - 1), 1, '..');
-    query.getDescription = () => progression.concat(' ');
-    query.checkAnswer = c => parseInt(c, 10) === answer;
-    query.getCorrectAnswer = () => answer;
-    return query;
+    question.getDescription = () => progression.concat(' ');
+    question.checkAnswer = c => parseInt(c, 10) === answer;
+    question.getCorrectAnswer = () => answer;
+    return question;
   },
 };
 export default () => playGame(progressionGame);
