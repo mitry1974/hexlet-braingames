@@ -6,6 +6,8 @@ const progressionCountMin = 3;
 const progressionCountMax = 15;
 const progressionStartMin = 1;
 const progressionStartMax = 15;
+const progressionStepMin = 1;
+const progressionStepMax = 10;
 
 const getProgression = (progressionStartElement, progressionElementsCount, progressionStep) => {
   if (progressionElementsCount === 0) {
@@ -24,7 +26,7 @@ const progressionGame = {
     const question = {};
     const progressionStartElement = getRandomInt(progressionStartMin, progressionStartMax);
     const progressionElementsCount = getRandomInt(progressionCountMin, progressionCountMax);
-    const progressionStep = getRandomInt(1, 10);
+    const progressionStep = getRandomInt(progressionStepMin, progressionStepMax);
     const progression = getProgression(
       progressionStartElement,
       progressionElementsCount,
