@@ -25,7 +25,6 @@
   "author": "Dmitry Trushtalevskiy",
   "license": "ISC",
   "dependencies": {
-    "hexlet-pairs": "^1.0.8",
     "readline-sync": "^1.4.9"
   },
   "devDependencies": {
