@@ -7,17 +7,17 @@
     "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
     "prepublishOnly": "npm run build"
   },
-  "keywords":[
+  "keywords": [
     "study",
     "games",
     "hexlet"
   ],
   "bin": {
     "brain-calc": "dist/bin/brain-calc.js",
-    "brain-even" : "dist/bin/brain-even.js",
-    "brain-gcd" : "dist/bin/brain-gcd.js",
-    "brain-prime" : "dist/bin/brain-prime.js",
-    "brain-progression" : "dist/bin/brain-progression.js"
+    "brain-even": "dist/bin/brain-even.js",
+    "brain-gcd": "dist/bin/brain-gcd.js",
+    "brain-prime": "dist/bin/brain-prime.js",
+    "brain-progression": "dist/bin/brain-progression.js"
   },
   "files": [
     "dist"
@@ -25,6 +25,7 @@
   "author": "Dmitry Trushtalevskiy",
   "license": "ISC",
   "dependencies": {
+    "hexlet-pairs": "^1.0.8",
     "readline-sync": "^1.4.9"
   },
   "devDependencies": {

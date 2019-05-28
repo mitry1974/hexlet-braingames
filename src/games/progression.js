@@ -21,9 +21,8 @@ const getProgression = (progressionStartElement, progressionElementsCount, progr
 };
 
 const progressionGame = {
-  getGameDescription: () => 'What number is missing in the progression?',
+  description: 'What number is missing in the progression?',
   getNextQuestion() {
-    const question = {};
     const progressionStartElement = getRandomInt(progressionStartMin, progressionStartMax);
     const progressionElementsCount = getRandomInt(progressionCountMin, progressionCountMax);
     const progressionStep = getRandomInt(progressionStepMin, progressionStepMax);
@@ -32,11 +31,11 @@ const progressionGame = {
       progressionElementsCount,
       progressionStep,
     );
-    const [answer] = progression.splice(getRandomInt(0, progression.length - 1), 1, '..');
-    question.getDescription = () => progression.concat(' ');
-    question.checkAnswer = c => parseInt(c, 10) === answer;
-    question.getCorrectAnswer = () => answer;
-    return question;
+    const opA = progression.splice(getRandomInt(0, progression.length - 1), 1, '..');
+    return {
+      text: progression.concat(' '),
+      answer: opA.toString(),
+    };
   },
 };
 export default () => playGame(progressionGame);
