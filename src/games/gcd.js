@@ -1,19 +1,18 @@
 #!/usr/bin/env node
 import playGame from '../engine';
-import { getOperand } from '../utils';
+import getRandomInt from '../utils';
+
+const gameDescription = 'Find the greatest common divisor of given numbers.';
 
 const findGCD = (a, b) => ((a === 0) ? b : findGCD(b % a, a));
 
-const gcdGame = {
-  description: 'Find the greatest common divisor of given numbers.',
-  getNextQuestion() {
-    const opA = getOperand();
-    const opB = getOperand();
-    return {
-      text: `${opA} ${opB}`,
-      answer: findGCD(opA, opB).toString(),
-    };
-  },
+const getNextRound = () => {
+  const a = getRandomInt(1, 10);
+  const b = getRandomInt(1, 10);
+  return {
+    question: `${a} ${b}`,
+    answer: findGCD(a, b).toString(),
+  };
 };
 
-export default () => playGame(gcdGame);
+export default () => playGame(gameDescription, getNextRound);

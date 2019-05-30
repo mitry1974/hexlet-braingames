@@ -1,6 +1,4 @@
 #!/usr/bin/env node
-const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
+const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
-const getOperand = () => getRandomInt(1, 100);
-
-export { getRandomInt, getOperand };
+export default getRandomInt;
