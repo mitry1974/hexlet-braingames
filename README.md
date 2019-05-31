@@ -4,7 +4,7 @@
 <p> That is first Hexlet project = "Brain games", developed by Dmitry Trushtalevskiy. It consits of five games - Calculation, Even, Prime, Progression, GCD (Greatest common divisor).</p>
     <h3>How to install:</h3>
     <p>Using npm package manager, run command in linux enviroment 'npm install -g mt-brain-games'.
-    Aftet that user can run five games using commands:
+    After that user can run five games using commands:
     <ul>
         <li>brain-calc</li>
         <li>brain-even</li>

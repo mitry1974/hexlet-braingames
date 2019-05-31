@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 import playGame from '../engine';
 import getRandomInt from '../utils';
 
