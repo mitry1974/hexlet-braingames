@@ -3,14 +3,14 @@ import getRandomInt from '../utils';
 
 const gameDescription = 'Find the greatest common divisor of given numbers.';
 
-const findGCD = (a, b) => ((a === 0) ? b : findGCD(b % a, a));
+const findGcd = (a, b) => ((a === 0) ? b : findGcd(b % a, a));
 
 const generateRound = () => {
   const a = getRandomInt(1, 10);
   const b = getRandomInt(1, 10);
   return {
     question: `${a} ${b}`,
-    answer: findGCD(a, b).toString(),
+    answer: findGcd(a, b).toString(),
   };
 };
 
