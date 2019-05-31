@@ -9,7 +9,7 @@ const operations = {
   '*': (a, b) => a * b,
 };
 
-const getNextRound = () => {
+const generateRound = () => {
   const a = getRandomInt(0, 10);
   const b = getRandomInt(0, 10);
   const keys = Object.keys(operations);
@@ -23,4 +23,4 @@ const getNextRound = () => {
   };
 };
 
-export default () => playGame(gameDescription, getNextRound);
+export default () => playGame(gameDescription, generateRound);

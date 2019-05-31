@@ -14,7 +14,7 @@ const getProgression = (start, count, step) => {
   )];
 };
 
-const getNextRound = () => {
+const generateRound = () => {
   const start = getRandomInt(1, 15);
   const step = getRandomInt(1, 10);
   const length = 10;
@@ -29,4 +29,4 @@ const getNextRound = () => {
     answer: a.toString(),
   };
 };
-export default () => playGame(gameDescription, getNextRound);
+export default () => playGame(gameDescription, generateRound);

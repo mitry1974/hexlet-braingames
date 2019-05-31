@@ -15,7 +15,7 @@ const isPrime = (val) => {
   return true;
 };
 
-const getNextRound = () => {
+const generateRound = () => {
   const a = getRandomInt(1, 100);
   return {
     question: a,
@@ -23,4 +23,4 @@ const getNextRound = () => {
   };
 };
 
-export default () => playGame(gameDescription, getNextRound);
+export default () => playGame(gameDescription, generateRound);
