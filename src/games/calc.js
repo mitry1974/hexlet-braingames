@@ -15,11 +15,11 @@ const generateRound = () => {
   const keys = Object.keys(operations);
   const index = getRandomInt(0, keys.length - 1);
   const sign = keys[index];
-  const func = operations[sign];
+  const operation = operations[sign];
 
   return {
     question: `${a} ${sign} ${b} = `,
-    answer: (func(a, b)).toString(),
+    answer: (operation(a, b)).toString(),
   };
 };
 
