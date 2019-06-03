@@ -5,10 +5,10 @@ const gameDescription = 'Answer "yes" if number even otherwise answer "no".';
 
 const isEven = n => n % 2 === 0;
 const generateRound = () => {
-  const a = getRandomInt(1, 10);
+  const question = getRandomInt(1, 10);
   return {
-    question: a,
-    answer: (isEven(a) ? 'yes' : 'no'),
+    question,
+    answer: (isEven(question) ? 'yes' : 'no'),
   };
 };
 

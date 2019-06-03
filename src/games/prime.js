@@ -16,10 +16,10 @@ const isPrime = (val) => {
 };
 
 const generateRound = () => {
-  const num = getRandomInt(1, 100);
+  const question = getRandomInt(1, 100);
   return {
-    question: getRandomInt(1, 100),
-    answer: isPrime(num) ? 'yes' : 'no',
+    question,
+    answer: isPrime(question) ? 'yes' : 'no',
   };
 };
 

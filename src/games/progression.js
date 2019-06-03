@@ -18,15 +18,11 @@ const getProgression = (start, count, step) => {
 const generateRound = () => {
   const start = getRandomInt(1, 15);
   const step = getRandomInt(1, 10);
-  const progression = getProgression(
-    start,
-    length,
-    step,
-  );
-  const numbers = progression.splice(getRandomInt(0, progression.length - 1), 1, '..');
+  const progression = getProgression(start, length, step);
+  const answer = progression.splice(getRandomInt(0, progression.length - 1), 1, '..').toString();
   return {
     question: progression.join(' '),
-    answer: numbers.toString(),
+    answer,
   };
 };
 export default () => playGame(gameDescription, generateRound);

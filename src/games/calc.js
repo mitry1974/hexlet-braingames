@@ -12,14 +12,14 @@ const operations = {
 const generateRound = () => {
   const a = getRandomInt(0, 10);
   const b = getRandomInt(0, 10);
-  const keys = Object.keys(operations);
-  const index = getRandomInt(0, keys.length - 1);
-  const sign = keys[index];
+  const signs = Object.keys(operations);
+  const operationIndex = getRandomInt(0, signs.length - 1);
+  const sign = signs[operationIndex];
   const operation = operations[sign];
 
   return {
     question: `${a} ${sign} ${b} = `,
-    answer: (operation(a, b)).toString(),
+    answer: operation(a, b).toString(),
   };
 };
 
