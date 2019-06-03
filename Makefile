@@ -9,4 +9,4 @@ startEven:
 	npx babel-node src/bin/brain-even.js
 
 lint:
-	eslint ./
+	eslint .
